@@ -83,15 +83,15 @@ Table: capture
 
 This table contains captures, realized at a date defined in the ``date`` column, of data related to the traffic speed on road links, defined in table ``link``. The primary key is the union of the link_start, link_end and date columns. The following table shows the description of every column in the table:
 
-===========   ==============================   ===========   ===================
-Column Name   Description                      Type          Example
-===========   ==============================   ===========   ===================
-link_start    The starting point of the link   foreign key   3006
-link_end      The ending point of the link     foreign key   30069
-rsl           Road Saturation Level            INTEGER       6
-ts            Traffic speed                    REAL          44
-date          Time of the speed measured       TEXT          2015-12-31T23:52:35
-===========   ==============================   ===========   ===================
+===========   ===========================================   =======   ==========
+Column Name   Description                                   Type      Example
+===========   ===========================================   =======   ==========
+link_start    Reference to link.start (foreign key)         INTEGER   3006
+link_end      Reference to link.end (foreign key)           INTEGER   30069
+rsl           Road Saturation Level                         INTEGER   6
+ts            Traffic speed                                 REAL      44
+date          Time of the capture (secs since 1970-01-01)   INTEGER   1537204220
+===========   ===========================================   =======   ==========
 
 Log file
 --------
