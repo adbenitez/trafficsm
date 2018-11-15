@@ -78,7 +78,7 @@ class DBManager:
         link_end INTEGER NOT NULL REFERENCES link(end),
         rsl INTEGER NOT NULL CHECK (rsl IN (6,7,8)),
         ts REAL NOT NULL,
-        date TEXT NOT NULL,
+        date INTEGER NOT NULL,
         PRIMARY KEY (link_start, link_end, date))''')
 
     def save_data(self, data):
@@ -98,7 +98,7 @@ class DBManager:
             date = e.find('td:CAPTURE_DATE', ns).text
             capture_row = (link_start, link_end, rsl, ts, date)
             try:
-                self.cur.execute('INSERT INTO capture VALUES (?,?,?,?,?)',
+                self.cur.execute('INSERT INTO capture VALUES (?,?,?,?,strftime("%s",?))',
                                  capture_row)
             except sqlite3.IntegrityError as e:
                 self.logger.error("%s %s", e, capture_row)
@@ -121,7 +121,7 @@ def create_args_parser():
                    help='the maximum number of bytes the log file can have before moving it to a backup file (default: %(default)s)')
     p.add_argument('--timeout', type=int, default=30,
                    help='the URL request timeout in seconds (default: %(default)s)')
-    p.add_argument('--debug', store=True, help='store debug info in the log file')
+    p.add_argument('--debug', action='store_true', help='store debug info in the log file')
     return p
 
 

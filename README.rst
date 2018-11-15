@@ -3,7 +3,7 @@ Traffic Speed Map
 *****************
 
 A project to test my programming skills.
-TSM is a web site for visualizing XML traffic data in useful ways, using maps and graphs to facilitate the analisis and knowledge extraction of the raw data.
+TrafficSM is a web site for visualizing XML traffic data in useful ways, using maps and graphs to facilitate the analisis and knowledge extraction of the raw data.
 
 .. note::
 
@@ -26,22 +26,22 @@ You need Python 3 and pip installed on your machine before installing the downlo
 
 .. code-block:: bash
 
-   $ python3 -m pip install tsm_downloader
+   $ python3 -m pip install trafficsm_downloader
 
-After installation, the command ``tsm_downloader`` will be available. The script accepts arguments like the data URL, path to the database file, path to the log file, etc., to see the full list of arguments and how to use them issue the command:
+After installation, the command ``trafficsm_downloader`` will be available. The script accepts arguments like the data URL, path to the database file, path to the log file, etc., to see the full list of arguments and how to use them issue the command:
 
 .. code-block:: bash
 
-   $ tsm_downloader --help
+   $ trafficsm_downloader --help
 
 Updating the database
 ---------------------
 
-When the script is executed it grabs the XML data from the given URL and exports it to the given sqlite3 database file, to update the database at regular intervals, execute the script using a service like cron, for example, to execute the script every two minutes, using the default data URL, creating/updating the database ``/var/tmp/traffic.db`` and saving logs to ``/var/log/tsm_downloader.log``, you could add the following line to your ``crontab`` file:
+When the script is executed it grabs the XML data from the given URL and exports it to the given sqlite3 database file, to update the database at regular intervals, execute the script using a service like cron, for example, to execute the script every two minutes, using the default data URL, creating/updating the database ``/var/tmp/traffic.db`` and saving logs to ``/var/log/trafficsm_downloader.log``, you could add the following line to your ``crontab`` file:
 
 .. code-block::
 
-   1-59/2 * * * * tsm_downloader --db /var/tmp/traffic.db --log /var/log/tsm_downloader.log >/dev/null 2>&1
+   1-59/2 * * * * trafficsm_downloader --db /var/tmp/traffic.db --log /var/log/tsm_downloader.log >/dev/null 2>&1
 
 Database specifications
 -----------------------
@@ -108,4 +108,4 @@ Flask server
 License
 =======
 
-This project is **free software**, licensed under the GPL3+ License - see the `LICENSE <https://github.com/adbenitez/tsm/blob/master/LICENSE>`_ file for more details.
+This project is **free software**, licensed under the GPL3+ License - see the `LICENSE <https://github.com/adbenitez/trafficsm/blob/master/LICENSE>`_ file for more details.
