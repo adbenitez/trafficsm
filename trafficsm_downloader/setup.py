@@ -2,16 +2,16 @@ import re
 
 from setuptools import find_packages, setup  # type: ignore
 
-with open('tsm_downloader.py', 'rt', encoding='utf8') as fh:
+with open('trafficsm_downloader.py', 'rt', encoding='utf8') as fh:
     source = fh.read()
     match = re.search(r'__version__ = \'(.*?)\'', source, re.M)
     VERSION = match.group(1)  # type: ignore
     match = re.search(r'__author__ = \'(.*?)\'', source, re.M)
     AUTHOR = match.group(1)  # type: ignore
 
-URL = 'https://github.com/adbenitez/tsm'
+URL = 'https://github.com/adbenitez/trafficsm'
 setup(
-    name='tsm_downloader',
+    name='trafficsm_downloader',
     version=VERSION,
     license='GPL3+',
     author=AUTHOR,
@@ -33,11 +33,11 @@ setup(
         'Source': URL,
         'Tracker': URL+'/issues'
     },
-    py_modules=['tsm_downloader'],
+    py_modules=['trafficsm_downloader'],
     python_requires='>=3.5',
     entry_points={
         'console_scripts': [
-            'tsm_downloader=tsm_downloader:main',
+            'trafficsm_downloader=trafficsm_downloader:main',
         ],
     }
 )
